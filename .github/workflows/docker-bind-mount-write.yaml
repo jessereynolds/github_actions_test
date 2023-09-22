@@ -15,16 +15,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - run: chmod 777 build
     - run: docker build --rm --tag notdocs .
     - run: docker run --rm --mount type=bind,source="$(pwd)"/build,target=/usr/src/app/build -e LANG=C.UTF-8 notdocs id
+    - run: docker run --user runner --rm --mount type=bind,source="$(pwd)"/build,target=/usr/src/app/build -e LANG=C.UTF-8 notdocs id
     - run: docker run --rm --mount type=bind,source="$(pwd)"/build,target=/usr/src/app/build -e LANG=C.UTF-8 notdocs pwd
     - run: docker run --rm --mount type=bind,source="$(pwd)"/build,target=/usr/src/app/build -e LANG=C.UTF-8 notdocs ls -la
     - run: docker run --rm --mount type=bind,source="$(pwd)"/build,target=/usr/src/app/build -e LANG=C.UTF-8 notdocs mount
     - run: docker run --rm --mount type=bind,source="$(pwd)"/build,target=/usr/src/app/build -e LANG=C.UTF-8 notdocs df -k .
     - run: docker run --rm --mount type=bind,source="$(pwd)"/build,target=/usr/src/app/build -e LANG=C.UTF-8 notdocs ls -la build/
     - run: docker run --rm --mount type=bind,source="$(pwd)"/build,target=/usr/src/app/build -e LANG=C.UTF-8 notdocs df -k build/.
-    - run: docker run --rm --mount type=bind,source="$(pwd)"/build,target=/usr/src/app/build -e LANG=C.UTF-8 notdocs touch build/foo
+    - run: docker run --user runner --rm --mount type=bind,source="$(pwd)"/build,target=/usr/src/app/build -e LANG=C.UTF-8 notdocs touch build/foo
     - run: pwd
     - run: find . -ls
 
