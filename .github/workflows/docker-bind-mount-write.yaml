@@ -20,7 +20,6 @@ jobs:
     - run: docker run --rm --mount type=bind,source="$(pwd)"/build,target=/usr/src/app/build -e LANG=C.UTF-8 notdocs pwd
     - run: docker run --rm --mount type=bind,source="$(pwd)"/build,target=/usr/src/app/build -e LANG=C.UTF-8 notdocs ls -la
     - run: docker run --rm --mount type=bind,source="$(pwd)"/build,target=/usr/src/app/build -e LANG=C.UTF-8 notdocs mount
-    - run: docker run --rm --mount type=bind,source="$(pwd)"/build,target=/usr/src/app/build -e LANG=C.UTF-8 notdocs ls -l /dev/root
     - run: docker run --rm --mount type=bind,source="$(pwd)"/build,target=/usr/src/app/build -e LANG=C.UTF-8 notdocs df -k .
     - run: docker run --rm --mount type=bind,source="$(pwd)"/build,target=/usr/src/app/build -e LANG=C.UTF-8 notdocs ls -la build/
     - run: docker run --rm --mount type=bind,source="$(pwd)"/build,target=/usr/src/app/build -e LANG=C.UTF-8 notdocs df -k build/.
